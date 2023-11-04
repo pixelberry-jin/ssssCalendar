@@ -1,6 +1,9 @@
 # Dependency directories
 node_modules/
 
+# Next build output
+/.next/
+
 # Production build output
 /build/
 
