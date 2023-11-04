@@ -34,6 +34,7 @@ const WeekRowComponent: React.FC<IWeekRowProps> = ({
           <DateCellComponent
             key={i}
             date={dateToShow}
+            dayIndex={i}
             isCurrentMonth={isCurrentMonth}
             onDateChange={() => onDateChange(day)}
           />

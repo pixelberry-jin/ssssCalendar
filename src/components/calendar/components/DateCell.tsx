@@ -1,7 +1,10 @@
 import { useEffect } from "react";
+import EmptyDateCellComponent from "./EmptyDateCellComponent";
+import AddableDateCellComponent from "./AddableDateCellComponent";
 
 interface IDateCellProps {
   date: number;
+  dayIndex: number;
   isCurrentMonth: boolean;
   onDateChange: () => void;
 }
@@ -9,6 +12,7 @@ interface IDateCellProps {
 // 날짜를 표시하는 컴포넌트
 const DateCellComponent: React.FC<IDateCellProps> = ({
   date,
+  dayIndex,
   isCurrentMonth,
   onDateChange,
 }) => {
@@ -17,14 +21,10 @@ const DateCellComponent: React.FC<IDateCellProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const className = isCurrentMonth ? "text-gray-800" : "text-gray-300";
-
-  return (
-    <td className="date">
-      <div className="date__wrapper">
-        <span className={className}>{date}</span>
-      </div>
-    </td>
+  return isCurrentMonth ? (
+    <AddableDateCellComponent date={date} dayIndex={dayIndex} />
+  ) : (
+    <EmptyDateCellComponent date={date} />
   );
 };
 
