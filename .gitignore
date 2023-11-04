@@ -1,0 +1,18 @@
+# Dependency directories
+node_modules/
+
+# Production build output
+/build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# IDE / Editor directories
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
