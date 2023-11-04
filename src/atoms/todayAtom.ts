@@ -6,6 +6,7 @@ export const todayAtom = atom<IToday>({
   default: (() => {
     const todayNow = new Date();
     const year = todayNow.getFullYear();
+    const monthIndex = todayNow.getMonth();
     const month = todayNow.getMonth() + 1;
     const day = todayNow.getDate();
 
@@ -17,6 +18,7 @@ export const todayAtom = atom<IToday>({
     return {
       fullDate: todayFullDate,
       year,
+      monthIndex,
       month,
       day,
     };
