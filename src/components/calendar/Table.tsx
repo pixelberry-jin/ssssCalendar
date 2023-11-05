@@ -7,6 +7,7 @@ import {
 import WeekRowComponent from "./components/WeekRow";
 import { currentSelector } from "@/selectors/currentSelector";
 import { useDrawCalendar } from "@/hooks/useDrawCalendar";
+import { initializedHolidayAtom } from "@/selectors";
 
 const CalendarComponent: React.FC = () => {
   const { drawTodayCalendar, drawNextCalendar, drawPrevCalendar } =
@@ -62,6 +63,8 @@ const CalendarComponent: React.FC = () => {
             return (
               <WeekRowComponent
                 key={weekOrder}
+                year={year}
+                month={month}
                 startDay={startDay}
                 prevMonthLastDate={prevMonthLastDate}
                 monthEndDate={currentMonthEndDays[monthIndex]}

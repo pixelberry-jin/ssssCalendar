@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import EmptyDateCellComponent from "./EmptyDateCellComponent";
 import AddableDateCellComponent from "./AddableDateCellComponent";
+import { getFullDate } from "@/utils/getFullDate";
 
 interface IDateCellProps {
+  year: number;
+  month: number;
   date: number;
   dayIndex: number;
   isCurrentMonth: boolean;
@@ -11,6 +14,8 @@ interface IDateCellProps {
 
 // 날짜를 표시하는 컴포넌트
 const DateCellComponent: React.FC<IDateCellProps> = ({
+  year,
+  month,
   date,
   dayIndex,
   isCurrentMonth,
@@ -22,9 +27,14 @@ const DateCellComponent: React.FC<IDateCellProps> = ({
   }, []);
 
   return isCurrentMonth ? (
-    <AddableDateCellComponent date={date} dayIndex={dayIndex} />
+    <AddableDateCellComponent
+      year={year}
+      month={month}
+      date={date}
+      dayIndex={dayIndex}
+    />
   ) : (
-    <EmptyDateCellComponent date={date} />
+    <EmptyDateCellComponent year={year} month={month} date={date} />
   );
 };
 

@@ -20,22 +20,22 @@ export const useDrawCalendar = () => {
   const drawNextCalendar = () => {
     const next = new Date(year, monthIndex + 1);
     const newYear = next.getFullYear();
-    const newMonth = next.getMonth();
+    const newMonthIndex = next.getMonth();
     setCurrent({
       year: newYear,
-      month: newMonth + 1,
-      monthIndex: newMonth,
+      month: newMonthIndex + 1,
+      monthIndex: newMonthIndex,
     });
   };
 
   const drawPrevCalendar = () => {
     const prev = new Date(year, monthIndex - 1);
     const newYear = prev.getFullYear();
-    const newMonth = prev.getMonth();
+    const newMonthIndex = prev.getMonth();
     setCurrent({
       year: newYear,
-      month: newMonth + 1,
-      monthIndex: newMonth,
+      month: newMonthIndex + 1,
+      monthIndex: newMonthIndex,
     });
   };
 

@@ -51,9 +51,9 @@ function getHolidays(year){
                 let tempDays = year + item.date;
                 let tempObj = {date: tempDays, name: item.name};
                 thisHolidays.push(tempObj);
-        });
-        
+        })
 }
+
 function Resut(type, inputYear, calDay, holidayName) {
 
         // 음력 데이터 (평달 - 작은달 :1,  큰달:2 )
