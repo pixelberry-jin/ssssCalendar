@@ -1,6 +1,6 @@
 export const LUNAR_HOLIDAY_LIST = [
-  { month: 12, date: 29, name: "" },
-  { month: 12, date: 30, name: "" },
+  { month: 12, date: 29, name: "", isPrevYear: true },
+  { month: 12, date: 30, name: "", isPrevYear: true },
   { month: 1, date: 1, name: "🌄설날" },
   { month: 1, date: 2, name: "" },
   { month: 4, date: 8, name: "👲부처님 오신 날" },

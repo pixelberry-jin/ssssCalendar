@@ -3,7 +3,7 @@ import React from "react";
 
 function CalendarPageComponent() {
   return (
-    <div>
+    <div className="px-2">
       <TableComponent />
     </div>
   );
