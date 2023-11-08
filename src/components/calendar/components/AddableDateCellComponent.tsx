@@ -34,7 +34,7 @@ const AddableDateCellComponent: React.FC<IAddableDateCellProps> = ({
       ? "text-blue-500"
       : "";
   const clickedClassName =
-    dayIndex === 0
+    dayIndex === 0 || Boolean(todayHoliday)
       ? "bg-red-500 text-white shadow-txt-1"
       : dayIndex === 6
       ? "bg-blue-500 text-white shadow-txt-1"

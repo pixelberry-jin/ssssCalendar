@@ -2,14 +2,15 @@ import React, { useState, useMemo } from "react";
 import { useRecoilValue } from "recoil";
 import {
   LEAP_YEAR_END_DAY_LIST,
+  MONTH_LIST,
   NOT_LEAP_YEAR_END_DAY_LIST,
 } from "@/constants";
-import WeekRowComponent from "./components/WeekRow";
+import WeekRowComponent from "./WeekRow";
 import { currentSelector } from "@/selectors/currentSelector";
 import { useDrawCalendar } from "@/hooks/useDrawCalendar";
-import WeekHead from "./components/WeekHead";
+import WeekHead from "./WeekHead";
 
-const CalendarComponent: React.FC = () => {
+const CalendarTableComponent: React.FC = () => {
   const { drawTodayCalendar, drawNextCalendar, drawPrevCalendar } =
     useDrawCalendar();
   const { year, month, monthIndex } = useRecoilValue(currentSelector);
@@ -36,14 +37,16 @@ const CalendarComponent: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="text-gray-800" onClick={drawPrevCalendar}>
-        이전
+    <div className="pb-10">
+      <div className="flex justify-start">
+        <button className="text-gray-800" onClick={drawPrevCalendar}>
+          이전
+        </button>
+        <button onClick={drawNextCalendar}>다음</button>
+        <button onClick={drawTodayCalendar}>오늘의 달력 화면으로</button>
       </div>
-      <div onClick={drawNextCalendar}>다음</div>
-      <div onClick={drawTodayCalendar}>오늘의 달력 화면으로</div>
-      <div>
-        {year} {month}
+      <div className="pt-6 pb-4 text-2xl text-center font-bold">
+        {MONTH_LIST[monthIndex]} {year}
       </div>
       <table id="calendar" className="calendar paper table-fixed">
         <thead className="calendar__day">
@@ -66,8 +69,8 @@ const CalendarComponent: React.FC = () => {
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
-export default CalendarComponent;
+export default CalendarTableComponent;

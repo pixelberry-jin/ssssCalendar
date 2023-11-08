@@ -1,12 +1,8 @@
-import TableComponent from "@/components/calendar/Table";
 import React from "react";
+import CalendarComponent from "@/components/calendar";
 
 function CalendarPageComponent() {
-  return (
-    <div className="px-2">
-      <TableComponent />
-    </div>
-  );
+  return <CalendarComponent />;
 }
 
 export default CalendarPageComponent;
