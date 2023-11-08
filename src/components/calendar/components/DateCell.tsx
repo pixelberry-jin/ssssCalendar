@@ -34,7 +34,12 @@ const DateCellComponent: React.FC<IDateCellProps> = ({
       dayIndex={dayIndex}
     />
   ) : (
-    <EmptyDateCellComponent year={year} month={month} date={date} />
+    <EmptyDateCellComponent
+      year={year}
+      month={month}
+      date={date}
+      dayIndex={dayIndex}
+    />
   );
 };
 
