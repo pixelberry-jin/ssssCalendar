@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import React, { useState, useMemo } from "react";
+import { useRecoilValue } from "recoil";
 import {
   LEAP_YEAR_END_DAY_LIST,
   NOT_LEAP_YEAR_END_DAY_LIST,
@@ -7,7 +7,7 @@ import {
 import WeekRowComponent from "./components/WeekRow";
 import { currentSelector } from "@/selectors/currentSelector";
 import { useDrawCalendar } from "@/hooks/useDrawCalendar";
-import { initializedHolidayAtom } from "@/selectors";
+import WeekHead from "./components/WeekHead";
 
 const CalendarComponent: React.FC = () => {
   const { drawTodayCalendar, drawNextCalendar, drawPrevCalendar } =
@@ -45,17 +45,9 @@ const CalendarComponent: React.FC = () => {
       <div>
         {year} {month}
       </div>
-      <table id="calendar" className="calendar paper">
+      <table id="calendar" className="calendar paper table-fixed">
         <thead className="calendar__day">
-          <tr>
-            <th className="text-red-600 text-center">SUN</th>
-            <th className="text-center">MON</th>
-            <th className="text-center">TUE</th>
-            <th className="text-center">WED</th>
-            <th className="text-center">THU</th>
-            <th className="text-center">FRI</th>
-            <th className="text-blue-600 text-center">SAT</th>
-          </tr>
+          <WeekHead />
         </thead>
         <tbody id="calendar__date" className="calendar__date">
           {Array.from({ length: weekCount }).map((_, weekOrder) => {

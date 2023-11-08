@@ -12,5 +12,10 @@ export const MONTH_LIST = [
   "November",
   "December",
 ];
-export const LEAP_YEAR_END_DAY_LIST = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-export const NOT_LEAP_YEAR_END_DAY_LIST = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+export const DAY_LIST = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+export const LEAP_YEAR_END_DAY_LIST = [
+  31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,
+];
+export const NOT_LEAP_YEAR_END_DAY_LIST = [
+  31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31,
+];

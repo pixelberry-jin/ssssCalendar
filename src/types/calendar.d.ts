@@ -3,4 +3,5 @@ export interface ICalendar {
 }
 interface IState {
   clickedFullDate: string | null;
+  clickedDayIndex: number | null;
 }

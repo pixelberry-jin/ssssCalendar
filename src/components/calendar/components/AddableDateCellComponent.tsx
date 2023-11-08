@@ -2,11 +2,7 @@ import { calendarAtom } from "@/atoms/calendarAtom";
 import { initializedHolidayAtom } from "@/selectors";
 import { calendarSelector } from "@/selectors/calendarSelector";
 import { getFullDate } from "@/utils/getFullDate";
-import {
-  useRecoilValue,
-  useRecoilValueLoadable,
-  useSetRecoilState,
-} from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 interface IAddableDateCellProps {
   year: number;
@@ -29,6 +25,7 @@ const AddableDateCellComponent: React.FC<IAddableDateCellProps> = ({
   const todayHoliday = holidayItems[fullDate];
 
   const isClicked = state.clickedFullDate === fullDate;
+  const isClickedDayIndex = state.clickedDayIndex === dayIndex;
 
   const defaultClassName =
     dayIndex === 0 || Boolean(todayHoliday)
@@ -44,11 +41,24 @@ const AddableDateCellComponent: React.FC<IAddableDateCellProps> = ({
       : "bg-sky-300 text-white shadow-txt-1";
 
   const handleClickDate = () => {
-    setCalendar((prev) => ({ ...prev, state: { clickedFullDate: fullDate } }));
+    setCalendar((prev) => ({
+      ...prev,
+      state: {
+        ...prev.state,
+        clickedFullDate: fullDate,
+        clickedDayIndex: dayIndex,
+      },
+    }));
   };
 
   return (
-    <td className="date" aria-label={fullDate} onClick={handleClickDate}>
+    <td
+      className="date"
+      aria-label={fullDate}
+      data-col-order={dayIndex}
+      colSpan={isClickedDayIndex ? 2 : 1}
+      onClick={handleClickDate}
+    >
       <div className="date__wrapper min-h-[5rem]">
         <span
           className={`text-sm inline-block w-6 h-6 rounded-full text-center leading-7 ${
