@@ -5,5 +5,5 @@ export interface ISchedule {
   month: number;
   day: number;
   name: string;
-  bgColor: string;
+  bgColor?: string;
 }

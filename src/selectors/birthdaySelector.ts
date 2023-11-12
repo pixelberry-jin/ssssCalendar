@@ -10,16 +10,6 @@ export const birthdayItemsSelector = selector<Record<string, IBirthDay>>({
   },
 });
 
-export const birthdayItemByIdSelector = selectorFamily<IBirthDay | undefined, string>({
-  key: "birthdayItemByIdSelector",
-  get:
-    (id) =>
-    ({ get }) => {
-      const { birthdayItems } = get(birthdayAtom);
-      return birthdayItems[id];
-    },
-});
-
 // example
 // const getBirthdayById = useRecoilValue(birthdayItemByIdSelector);
 // const myBirthday = getBirthdayById("some-id");

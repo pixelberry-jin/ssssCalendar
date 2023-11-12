@@ -13,7 +13,7 @@ export default async function handler(
     const oauth2Client = new google.auth.OAuth2(
       process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
       process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
-      process.env.NEXT_PUBLIC_AUTH_REDIRECT_URL
+      process.env.NEXT_PUBLIC_GOOGLE_AUTH_REDIRECT_URL
     );
 
     const { tokens } = await oauth2Client.getToken(code as string);

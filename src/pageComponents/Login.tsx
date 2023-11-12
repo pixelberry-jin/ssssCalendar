@@ -1,4 +1,5 @@
 import React from "react";
+import KakaoLoginButton from "@/components/login/components/KakaoLoginButton";
 import GoogleLoginButton from "@/components/login/components/GoogleLoginButton";
 
 function LoginPageComponent() {
@@ -6,6 +7,7 @@ function LoginPageComponent() {
     <div className="h-screen">
       <div className="w-full h-full flex justify-center items-center">
         <GoogleLoginButton />
+        <KakaoLoginButton />
       </div>
     </div>
   );

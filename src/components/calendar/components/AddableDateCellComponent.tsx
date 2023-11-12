@@ -1,3 +1,4 @@
+import { scheduleAtom } from "@/atoms";
 import { calendarAtom } from "@/atoms/calendarAtom";
 import { initializedHolidayAtom } from "@/selectors";
 import { calendarSelector } from "@/selectors/calendarSelector";
@@ -19,10 +20,12 @@ const AddableDateCellComponent: React.FC<IAddableDateCellProps> = ({
 }) => {
   const fullDate = getFullDate(year, month, date);
   const { holidayItems } = useRecoilValue(initializedHolidayAtom);
+  const { scheduleItems } = useRecoilValue(scheduleAtom);
   const { state } = useRecoilValue(calendarSelector);
   const setCalendar = useSetRecoilState(calendarAtom);
 
   const todayHoliday = holidayItems[fullDate];
+  const todaySchedules = scheduleItems[fullDate];
 
   const isClicked = state.clickedFullDate === fullDate;
   const isClickedDayIndex = state.clickedDayIndex === dayIndex;
@@ -61,13 +64,20 @@ const AddableDateCellComponent: React.FC<IAddableDateCellProps> = ({
     >
       <div className="date__wrapper min-h-[5rem]">
         <span
-          className={`text-sm inline-block w-6 h-6 rounded-full text-center leading-7 ${
+          className={`flex justify-center items-center text-sm inline-block w-6 h-6 rounded-full text-center leading-7 ${
             isClicked ? clickedClassName : defaultClassName
-          } cursor-pointer select-none`}
+          } font-bold cursor-pointer select-none mb-1`}
         >
           {date}
         </span>
         {todayHoliday?.name ?? ""}
+        {todaySchedules
+          ? todaySchedules.map((item, idx) => (
+              <div className="text-sm my-0.5" key={`schedule_item_${idx}`}>
+                {item.name}
+              </div>
+            ))
+          : null}
       </div>
     </td>
   );

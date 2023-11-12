@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import {
   LEAP_YEAR_END_DAY_LIST,
@@ -10,13 +10,22 @@ import { currentSelector } from "@/selectors/currentSelector";
 import { useDrawCalendar } from "@/hooks/useDrawCalendar";
 import WeekHead from "./WeekHead";
 
-const CalendarTableComponent: React.FC = () => {
+interface IProps {
+  year: number;
+  month: number;
+  monthIndex: number;
+}
+
+export default function CalendarTableComponent({
+  year,
+  month,
+  monthIndex,
+}: IProps) {
   const { drawTodayCalendar, drawNextCalendar, drawPrevCalendar } =
     useDrawCalendar();
-  const { year, month, monthIndex } = useRecoilValue(currentSelector);
-
   const isLeapYear = Boolean(year % 4 === 0);
   const [_, setCurrentDate] = useState<number>(1);
+
   const currentMonthEndDays = useMemo(() => {
     return isLeapYear ? LEAP_YEAR_END_DAY_LIST : NOT_LEAP_YEAR_END_DAY_LIST;
   }, [isLeapYear]);
@@ -71,6 +80,4 @@ const CalendarTableComponent: React.FC = () => {
       </table>
     </div>
   );
-};
-
-export default CalendarTableComponent;
+}

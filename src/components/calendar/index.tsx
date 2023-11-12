@@ -3,7 +3,13 @@ import { useGetMeInfo } from "@/hooks/useMe";
 import { handleLogout } from "@/utils/handleLogout";
 import React from "react";
 
-export default function CalendarComponent() {
+interface IProps {
+  year: number;
+  month: number;
+  monthIndex: number;
+}
+
+export default function CalendarComponent({ year, month, monthIndex }: IProps) {
   const me = useGetMeInfo();
 
   return (
@@ -18,7 +24,11 @@ export default function CalendarComponent() {
         ) : null}
         <button onClick={() => handleLogout()}>로그아웃</button>
       </div>
-      <CalendarTableComponent />
+      <CalendarTableComponent
+        year={year}
+        month={month}
+        monthIndex={monthIndex}
+      />
     </div>
   );
 }
