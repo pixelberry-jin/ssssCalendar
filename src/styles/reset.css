@@ -4,7 +4,7 @@
   font-weight: normal;
   font-style: normal;
 }
-body {
+body, div, span, p, button{
   font-family: 'NanumBarunpen', sans-serif;
 }
 html {
