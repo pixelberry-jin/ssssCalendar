@@ -40,7 +40,6 @@ function CalendarPageComponent() {
               },
               {}
             );
-            console.log(schedulesRecordList);
             setSchedules({
               scheduleItems: { ...scheduleItems, ...schedulesRecordList },
             });
