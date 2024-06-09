@@ -21,7 +21,7 @@ export default async function handler(
   try {
     // 카카오 톡 캘린더 API 호출
     const response = await axios.get(
-      "https://kapi.kakao.com/v2/api/calendar/calendars",
+      "https://kapi.kakao.com/v2/api/calendar/events",
       {
         headers: {
           Authorization: accessToken,
