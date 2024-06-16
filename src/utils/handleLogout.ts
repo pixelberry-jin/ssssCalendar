@@ -7,7 +7,6 @@ export async function handleLogout() {
       },
     });
     const data = await response.json();
-    console.log(data.message);
     localStorage.removeItem("me");
     window.location.pathname = "/login";
   } catch (error) {

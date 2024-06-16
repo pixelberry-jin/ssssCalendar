@@ -16,7 +16,6 @@ export function handleLoginSuccess(event: MessageEvent) {
       window.location.pathname = "/";
     }
     if (event.data.loginType === "kakao") {
-      console.log(event.data.userInfo);
       localStorage.setItem(
         "me",
         JSON.stringify({

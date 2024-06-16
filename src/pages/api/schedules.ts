@@ -51,8 +51,6 @@ export default async function handler(
       orderBy: "startTime",
     });
 
-    console.log(response.data.items);
-
     const schedules = response.data.items?.map((item, idx) => {
       const fullDate =
         item.start?.date ?? String(item.start?.dateTime).substring(0, 10);
