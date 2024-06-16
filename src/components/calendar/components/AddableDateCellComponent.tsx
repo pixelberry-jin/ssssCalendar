@@ -25,7 +25,15 @@ const AddableDateCellComponent: React.FC<IAddableDateCellProps> = ({
   const setCalendar = useSetRecoilState(calendarAtom);
 
   const todayHoliday = holidayItems[fullDate];
-  const todaySchedules = scheduleItems[fullDate];
+  // const todaySchedules = scheduleItems[fullDate];
+  const todaySchedules = [
+    {
+      name: "Test Schedule 1",
+    },
+    {
+      name: "Test Schedule 2",
+    },
+  ];
 
   const isClicked = state.clickedFullDate === fullDate;
   const isClickedDayIndex = state.clickedDayIndex === dayIndex;
@@ -64,7 +72,7 @@ const AddableDateCellComponent: React.FC<IAddableDateCellProps> = ({
     >
       <div className="date__wrapper min-h-[5rem]">
         <span
-          className={`flex justify-center items-center text-sm inline-block w-6 h-6 rounded-full text-center leading-7 ${
+          className={`flex justify-center items-center text-sm w-6 h-6 rounded-full text-center leading-7 ${
             isClicked ? clickedClassName : defaultClassName
           } font-bold cursor-pointer select-none mb-1`}
         >
@@ -78,6 +86,24 @@ const AddableDateCellComponent: React.FC<IAddableDateCellProps> = ({
               </div>
             ))
           : null}
+        {isClicked ? (
+          <input
+            type="text"
+            className="w-full h-8"
+            onKeyDown={(e) => {
+              console.log(e);
+              todaySchedules.push({
+                name: e.currentTarget.value,
+              });
+              if (e.key === "Enter") {
+                // todaySchedules.push({
+                //   name: e.currentTarget.value,
+                // });
+                // Handle the enter event here
+              }
+            }}
+          />
+        ) : null}
       </div>
     </td>
   );
